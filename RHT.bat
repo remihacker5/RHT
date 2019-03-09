@@ -3,8 +3,8 @@ color 0a
 title RHT - Made by remihacker
 set /a d=0
 set /a cl=0
-set /p p=Password:
-if not %p%==remihacker goto :wrongpassword
+set /p p=the password is password:
+if not %p%==password goto :wrongpassword
 goto :menu
 
 :wrongpassword
@@ -28,8 +28,9 @@ echo r = RAR file cracker
 echo m = matrix effect
 echo f = folder locker
 echo t = text to speech
-echo v = antivirus test
+echo v = antivirus test (not working)
 echo s = shutdown computer
+echo 1 = spawn random folders
 if %d%==0 echo d = turn debug on, you will be able to see the used commands if its on
 if %d%==0 echo (only recommended for advanced users/learning)
 if %d%==1 echo debug mode is on
@@ -45,11 +46,16 @@ if %o%==f goto :locker
 if %o%==t goto :texttospeech
 if %o%==v goto :antivirus
 if %o%==s goto :shutdown
+if %0%==s goto :spawn
 goto :menu
+
+:spawn
+md %random%
+goto spawn 
 
 :shutdown
 echo your computer will shutdown in 45 seconds
-echo close this window to cancle
+echo close this window to cancel
 shutdown.exe -s -t 45
 
 :antivirus
